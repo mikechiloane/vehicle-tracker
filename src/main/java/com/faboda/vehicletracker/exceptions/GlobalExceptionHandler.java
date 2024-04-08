@@ -1,7 +1,6 @@
 package com.faboda.vehicletracker.exceptions;
 
 
-
 import jakarta.validation.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,20 +22,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<ApiResponse> handleNotFoundException(NotFoundException ex) {
-        ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND, "Resource not found", ex.getMessage());
-        return new ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(AlreadyExistsException.class)
-    public ResponseEntity<ApiResponse> handleAlreadyExistException (AlreadyExistsException ex) {
-        ApiResponse apiResponse = new ApiResponse(HttpStatus.CONFLICT, "Resource not found", ex.getMessage());
-        return new ResponseEntity<>(apiResponse, HttpStatus.CONFLICT);
-    }
-
     @ExceptionHandler(MissingInputFieldException.class)
-    public ResponseEntity<ApiResponse> handleMissingInputFieldException (MissingInputFieldException ex) {
+    public ResponseEntity<ApiResponse> handleMissingInputFieldException(MissingInputFieldException ex) {
         ApiResponse apiResponse = new ApiResponse(HttpStatus.BAD_REQUEST, "Missing field", ex.getMessage());
         return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
     }
